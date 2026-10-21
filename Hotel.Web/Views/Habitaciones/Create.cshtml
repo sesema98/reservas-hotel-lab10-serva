@@ -1,0 +1,7 @@
+@model Habitacion
+@{ ViewData["Title"] = "Nueva habitación"; }
+<h1>Nueva habitación</h1>
+<form asp-action="Create" method="post" class="formulario">
+
+<partial name="_Formulario" model="Model"/><button class="btn btn-primary">Guardar</button> <a asp-action="Index" class="btn btn-outline-secondary">Volver</a></form>
+@section Scripts { <partial name="_ValidationScriptsPartial"/> }

@@ -1,0 +1,11 @@
+@model IEnumerable<Habitacion>
+@{ ViewData["Title"] = "Disponibilidad"; DateOnly? ingreso = ViewBag.Ingreso; DateOnly? salida = ViewBag.Salida; int noches = ViewBag.Noches ?? 0; }
+<h1>Disponibilidad</h1><p>Consulta habitaciones libres para tu estadía. La salida de una reserva puede coincidir con el ingreso de la siguiente.</p>
+<form asp-action="Disponibles" method="get" class="row g-3 mb-4"><div asp-validation-summary="All" class="text-danger" role="alert"></div><div class="col-sm-4"><label for="ingreso" class="form-label">Ingreso</label><input id="ingreso" name="ingreso" type="date" value="@(ingreso?.ToString("yyyy-MM-dd"))" class="form-control" required/></div><div class="col-sm-4"><label for="salida" class="form-label">Salida</label><input id="salida" name="salida" type="date" value="@(salida?.ToString("yyyy-MM-dd"))" class="form-control" required/></div><div class="col-sm-4 align-self-end"><button class="btn btn-primary">Consultar</button></div></form>
+@if (ViewBag.Busqueda == true) {
+<p>@noches noche(s) · @Model.Count() habitación(es) disponible(s)</p>
+<table class="table table-striped"><thead><tr><th>Número</th><th>Tipo</th><th>Precio por noche</th><th>Noches</th><th>Total estimado</th><th></th></tr></thead><tbody>
+@foreach (var h in Model) { <tr><td>@h.Numero</td><td>@h.IdTipoHabitacionNavigation.Nombre</td><td>S/ @h.IdTipoHabitacionNavigation.PrecioNoche.ToString("0.00")</td><td>@noches</td><td>S/ @((h.IdTipoHabitacionNavigation.PrecioNoche * noches).ToString("0.00"))</td><td><a class="btn btn-sm btn-outline-primary" asp-action="Create" asp-route-idHabitacion="@h.IdHabitacion" asp-route-ingreso="@(ingreso?.ToString("yyyy-MM-dd"))" asp-route-salida="@(salida?.ToString("yyyy-MM-dd"))">Reservar</a></td></tr> }
+</tbody></table>
+@if (!Model.Any()) { <p>No hay habitaciones disponibles para esas fechas.</p> }
+}

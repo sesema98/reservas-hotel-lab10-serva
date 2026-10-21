@@ -1,0 +1,5 @@
+@model Habitacion
+@{ ViewData["Title"] = "Dar de baja"; }
+<h1>Dar de baja la habitación @Model.Numero</h1><p>La habitación dejará de aparecer entre las activas. Las reservas y su historial se conservarán.</p>
+<p>Tipo: @Model.IdTipoHabitacionNavigation.Nombre · Piso: @Model.Piso</p>
+<form asp-action="Delete" asp-route-id="@Model.IdHabitacion" method="post"><div asp-validation-summary="All" class="text-danger"></div><button class="btn btn-danger">Confirmar baja</button> <a class="btn btn-outline-secondary" asp-action="Index">Volver</a></form>

@@ -1,0 +1,4 @@
+USE HotelDB;
+GO
+ALTER TABLE Reserva ADD Observaciones NVARCHAR(200) NULL;
+GO

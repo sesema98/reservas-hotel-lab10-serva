@@ -1,0 +1,7 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>@ViewData["Title"] · Hotel</title><link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/><link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/></head>
+<body><header><nav class="navbar navbar-expand-sm navbar-dark bg-dark"><div class="container"><a class="navbar-brand" asp-controller="Habitaciones" asp-action="Index">Hotel · Reservas</a><div class="navbar-nav flex-row gap-3"><a class="nav-link" asp-controller="Habitaciones" asp-action="Index">Habitaciones</a><a class="nav-link" asp-controller="Reservas" asp-action="Disponibles">Disponibilidad</a><a class="nav-link" asp-controller="Reservas" asp-action="Index">Reservas</a></div></div></nav></header>
+<main class="container py-4">@if (TempData["Mensaje"] is string mensaje) { <div class="alert alert-success" role="status">@mensaje</div> } @RenderBody()</main>
+<footer class="container border-top py-3 text-muted">Hotel · Gestión de habitaciones y reservas</footer>
+<script src="~/lib/jquery/dist/jquery.min.js"></script><script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>@await RenderSectionAsync("Scripts", required: false)</body></html>

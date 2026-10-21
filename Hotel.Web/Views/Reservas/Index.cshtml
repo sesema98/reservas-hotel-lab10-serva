@@ -1,0 +1,8 @@
+@model IEnumerable<Reserva>
+@{ ViewData["Title"] = "Reservas"; }
+<div class="d-flex justify-content-between align-items-center mb-3"><h1>Reservas</h1><a class="btn btn-primary" asp-action="Create">Nueva reserva</a></div>
+<div class="table-responsive"><table class="table table-striped"><thead><tr><th>Código</th><th>Huésped</th><th>Habitación</th><th>Ingreso</th><th>Salida</th><th>Estado</th><th>Total</th><th>Observaciones</th><th>Acciones</th></tr></thead><tbody>
+@foreach (var r in Model) { <tr><td>@r.IdReserva</td><td>@r.IdHuespedNavigation.Apellidos, @r.IdHuespedNavigation.Nombres</td><td>@r.IdHabitacionNavigation.Numero</td><td>@r.FechaIngreso.ToString("dd/MM/yyyy")</td><td>@r.FechaSalida.ToString("dd/MM/yyyy")</td><td>@r.Estado</td><td class="text-nowrap">S/ @((r.IdHabitacionNavigation.IdTipoHabitacionNavigation.PrecioNoche * (r.FechaSalida.DayNumber - r.FechaIngreso.DayNumber)).ToString("0.00"))</td><td>@r.Observaciones</td><td>@if (r.Estado == "Pendiente" || r.Estado == "Confirmada") { <form asp-action="Cancelar" asp-route-id="@r.IdReserva" method="post"><button class="btn btn-sm btn-outline-danger">Cancelar</button></form> }</td></tr> }
+</tbody></table></div>
+<p class="text-muted">Total calculado según noches y tarifa actual del tipo de habitación.</p>
+@if (!Model.Any()) { <p>Aún no hay reservas.</p> }

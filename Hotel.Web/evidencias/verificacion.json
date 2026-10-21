@@ -1,0 +1,32 @@
+{
+  "fecha": "2026-10-21",
+  "resultado": "correcto",
+  "casos": [
+    "8 habitaciones activas y 204 excluida",
+    "Filtro Suite",
+    "Detalle con tipo",
+    "Número duplicado con error en formulario",
+    "Piso inválido",
+    "Alta y Post Redirect Get",
+    "Edición persistida",
+    "Disponibilidad excluye cruces",
+    "Límite contiguo y cancelada no bloquean",
+    "Disponibilidad rechaza salida igual al ingreso",
+    "Listas solo de activos y Observaciones",
+    "Ingreso anterior a hoy",
+    "Salida debe superar ingreso",
+    "Reserva cruzada rechazada",
+    "Huésped inactivo rechazado",
+    "Habitación inactiva rechazada",
+    "Observaciones máximo 200",
+    "Reserva Pendiente con observaciones y total",
+    "Estado inicial Pendiente",
+    "Alta bloquea disponibilidad",
+    "Cancelar cambia estado y conserva reserva",
+    "Cancelación libera habitación",
+    "Finalizada no se puede cancelar",
+    "Baja lógica desaparece del listado",
+    "Baja conserva número único",
+    "Protección antifalsificación"
+  ]
+}

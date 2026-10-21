@@ -1,0 +1,9 @@
+@model IEnumerable<Habitacion>
+@{ ViewData["Title"] = "Habitaciones"; }
+<div class="d-flex justify-content-between align-items-center mb-3"><h1>Habitaciones</h1><a class="btn btn-primary" asp-action="Create">Nueva habitación</a></div>
+<p>Habitaciones activas, ordenadas por número.</p>
+<form method="get" class="d-flex gap-2 mb-4"><label for="tipo" class="align-self-center">Tipo</label><select id="tipo" name="tipo" asp-items="ViewBag.Tipos" class="form-select w-auto"><option value="">Todos los tipos</option></select><button class="btn btn-outline-primary">Filtrar</button></form>
+<table class="table table-striped"><thead><tr><th>Número</th><th>Piso</th><th>Tipo</th><th>Capacidad</th><th>Precio por noche</th><th>Acciones</th></tr></thead><tbody>
+@foreach (var h in Model) { <tr><td>@h.Numero</td><td>@h.Piso</td><td>@h.IdTipoHabitacionNavigation.Nombre</td><td>@h.IdTipoHabitacionNavigation.Capacidad</td><td>S/ @h.IdTipoHabitacionNavigation.PrecioNoche.ToString("0.00")</td><td><a asp-action="Details" asp-route-id="@h.IdHabitacion">Detalle</a> · <a asp-action="Edit" asp-route-id="@h.IdHabitacion">Editar</a> · <a asp-action="Delete" asp-route-id="@h.IdHabitacion">Dar de baja</a></td></tr> }
+</tbody></table>
+@if (!Model.Any()) { <p>No hay habitaciones para el filtro seleccionado.</p> }

@@ -1,0 +1,16 @@
+**/bin/
+**/obj/
+.vs/
+.dotnet-home/
+.nuget/
+.tools/
+_private/
+*.user
+
+# Archivos locales ajenos a la entrega
+/Lab05-DAEA-main/
+/Hotel-Lab10.zip
+/build_hotel.py
+/build_views.py
+/create_report.py
+/prepare_delivery.py
